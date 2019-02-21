@@ -3,7 +3,7 @@ let coche = require('./cocheModelo')
 // LISTAR UN COCHE POR ID
 function getCoche(req,res){
     let idCoche = req.params.id
-    coche.findOne(idCoche).then(
+    coche.findById(idCoche).then(
         cocheEncontrado=>{ 
             if(!cocheEncontrado){
                 res.status(404).send({accion:'getAll',mensaje:'No hay coches'})
@@ -75,7 +75,7 @@ function updateCoche(req,res){
 
 function deleteCoche(req,res){
 let idCoche = req.params.id
-coche.findOneAndDelete(idCoche).then(
+coche.findByIdAndDelete(idCoche).then(
     cocheBorrado=>{
         res.status(200).send({accion:'delete',data:cocheBorrado})
     }
